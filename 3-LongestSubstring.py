@@ -44,17 +44,18 @@ class Solution(object):
 
 
 
-t1 = 'abcabcbb'  # abc       3
-t2 = 'bbbbb'     # b         1
-t3 = 'pwwkew'    # wke       3
-t4 = 'pwetywuiw' # etywui    6
-t5 = 'abcdef'	 # abcdef    6
-t6 = 'aabc'		 # abc       3
+# t1 = 'abcabcbb'  # abc       3
+# t2 = 'bbbbb'     # b         1
+# t3 = 'pwwkew'    # wke       3
+# t4 = 'pwetywuiw' # etywui    6
+# t5 = 'abcdef'	 # abcdef    6
+# t6 = 'aabc'		 # abc       3
 
-lengthObj = Solution()
-print(lengthObj.lengthOfLongestSubstring(t1))
-print(lengthObj.lengthOfLongestSubstring(t2))
-print(lengthObj.lengthOfLongestSubstring(t3))
-print(lengthObj.lengthOfLongestSubstring(t4))
-print(lengthObj.lengthOfLongestSubstring(t5))
-print(lengthObj.lengthOfLongestSubstring(t6))
+# lengthObj = Solution()
+# print(lengthObj.lengthOfLongestSubstring(t1))
+# print(lengthObj.lengthOfLongestSubstring(t2))
+# print(lengthObj.lengthOfLongestSubstring(t3))
+# print(lengthObj.lengthOfLongestSubstring(t4))
+# print(lengthObj.lengthOfLongestSubstring(t5))
+# print(lengthObj.lengthOfLongestSubstring(t6))
+
