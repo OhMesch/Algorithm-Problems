@@ -35,7 +35,7 @@ class Solution(object):
 
 
 
-			elif s[index] == oneAway:
+			if s[index] == oneAway:
 				frwd = index
 				prev = index - 1
 				while(s[frwd] == s[prev]):
@@ -46,11 +46,11 @@ class Solution(object):
 						frwd = frwd + 1
 						prev = prev - 1
 						palidromes.append(s[prev+1:frwd])
-
+ 
 			twoAway = oneAway
 			oneAway = s[index]
 			index += 1
-			
+
 		if len(max(palidromes, key =len)) == 0:
 			return(s[0])
 		return(max(palidromes, key =len))
@@ -82,6 +82,7 @@ print(driver.longestPalindrome(t8))
 print(driver.longestPalindrome(t9))
 print(driver.longestPalindrome(t10))
 print(driver.longestPalindrome(t11))
+
 # tests = []
 # tests.append(t1)
 # tests.append(t2)
