@@ -1,3 +1,6 @@
+# Problem:
+# Given a interager determine if it is a palindrome
+
 class Solution(object):
 	def isPalindrome(self, x):
 		number = str(x)
