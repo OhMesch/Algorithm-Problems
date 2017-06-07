@@ -32,13 +32,13 @@ class Solution(object):
 				array[y].append(character)
 				y += 1
 		for rowArr in array:
+			# print(rowArr)
+			# ^ This line displays the text in the zigzag pattern
 			if len(rowArr) == 0:
 				del rowArr
 			else:
 				while rowArr[-1] == ' ':
 					del rowArr[-1]
-			# print(rowArr)
-			# ^ This line displays the text in the zigzag pattern
 				for char in rowArr:
 					output.append(char)
 
