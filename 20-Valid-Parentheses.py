@@ -1,6 +1,6 @@
 # Problem:
 # Given a string of (, ), {, }, [, and ]
-# Determing if the input string is valid
+# Determing if the input string uses valid (),[], and {}
 
 class Solution(object):
     def isValid(self, s):
