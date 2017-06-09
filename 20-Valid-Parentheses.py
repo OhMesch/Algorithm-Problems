@@ -25,26 +25,20 @@ class Solution(object):
         				return(False)
 
         return(True)
+    
+# driver = Solution()
+# t1 = '()'
+# t2 = '({[]})'
+# t3 = '(]'
+# t4 = '([)]'
+# t5 = '}{'
+# t6 = '([{'
+# t7 = '([{}'
 
-driver = Solution()
-t1 = '()'
-t2 = '({[]})'
-t3 = '(]'
-t4 = '([)]'
-t5 = '}{'
-t6 = '([{'
-t7 = '([{}'
-
-print(t1,driver.isValid(t1))
-print(t2,driver.isValid(t2))
-print(t3,driver.isValid(t3))
-print(t4,driver.isValid(t4))
-print(t5,driver.isValid(t5))
-print(t6,driver.isValid(t6))
-print(t7,driver.isValid(t7))
-
-array = ['a','b','c','d']
-
-array.reverse()
-print(array.pop())
-print(array.pop())
+# print(t1,driver.isValid(t1))
+# print(t2,driver.isValid(t2))
+# print(t3,driver.isValid(t3))
+# print(t4,driver.isValid(t4))
+# print(t5,driver.isValid(t5))
+# print(t6,driver.isValid(t6))
+# print(t7,driver.isValid(t7))
