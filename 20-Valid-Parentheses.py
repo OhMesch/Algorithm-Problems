@@ -42,3 +42,9 @@ print(t4,driver.isValid(t4))
 print(t5,driver.isValid(t5))
 print(t6,driver.isValid(t6))
 print(t7,driver.isValid(t7))
+
+array = ['a','b','c','d']
+
+array.reverse()
+print(array.pop())
+print(array.pop())
