@@ -17,11 +17,12 @@ class Solution(object):
 			del output[-1]
 		while output[0] == None:
 			del output[0]
-
+		print(arr1,arr2,output)
+		return()
 
 	def recurse(self, t1, level,offset,arr):
 		# print(t1.val,level,offset)
-		print((2**(level+1)-1) + offset)
+		# print((2**(level+1)-1) + offset)
 		arr[2**(level+1)-1 + offset] = t1.val
 		if t1.left != None:
 			levl = level +1
@@ -37,7 +38,6 @@ tree = TreeNode(1)
 tree.right = TreeNode(2)
 tree.left = TreeNode(3)
 tree.left.left = TreeNode(5)
-
 tree2 = TreeNode(1)
 tree2.left = TreeNode(2)
 tree2.right = TreeNode(3)

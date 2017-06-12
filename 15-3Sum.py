@@ -55,7 +55,6 @@ class Solution:
 					dictionary[nums[j]] = j
 		return(output)
 
-
 driver = Solution()
 t1 = [-1,0,1,2,-1,-4]
 # print(t1[])
