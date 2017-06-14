@@ -73,7 +73,8 @@ class Solution:
 			# 2 Sum
 			for j in range(len(numsReduced)):
 				if (target - nums[j]) in dictionary and self.isUnique(nums[i],target - nums[j],nums[j],output):
-					output.append([nums[i],target - nums[j],nums[j]])
+					if target-nums[j] != nums[j] or numsReduced.count(nums[j]) > 1:
+						output.append([nums[i],target - nums[j],nums[j]])
 				else:
 					dictionary[nums[j]] = j
 		return(output)
@@ -87,4 +88,6 @@ class Solution:
 
 driver = Solution()
 t1 = [-1,0,1,2,-1,-4]
+t2 = [1,2,-2,-1]
 print(driver.threeSum(t1))
+print(driver.threeSum(t2))
