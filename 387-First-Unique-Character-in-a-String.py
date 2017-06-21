@@ -21,10 +21,6 @@ class Solution(object):
 		else:
 			return(-1)
 
-		
-
-
-
 driver = Solution()
 t1 = 'leetcode'
 t2 = 'loveleetcode'
