@@ -10,6 +10,7 @@ class Solution(object):
 
 		occur = {}
 		unique = []
+		solCount = 0
 
 		nums.sort()
 
@@ -19,7 +20,33 @@ class Solution(object):
 				unique.append(number)
 			else:
 				occur[number] += 1
+
+		for i in range(len(unique)):
+
+			if occur[unique[i]] >= 3: 
+				#equalilateral
+				solCount += 1
+				#relation between more of the same and solutions
+
+			for j in range(i+1,len(unique)):
+
+				if occur[unique[i]] >= 2:
+					#iso
+					#check i and j
+					#if i and j are tri
+						solCount += 1
+						#relation between number and sol
+					#I and j not tri
+						#j is too big
+						break
+				for k in range(j+1,len(unique))
+
+
+
+
 		print(unique,occur)
+
+
 
 	def isTriangle(self, a,b,c):
 		"""
