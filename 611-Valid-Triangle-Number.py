@@ -25,8 +25,10 @@ class Solution(object):
 
 			if occur[unique[i]] >= 3: 
 				#equalilateral
-				solCount += 1
-				#relation between more of the same and solutions
+				if occur[unique[i]] == 3:
+					solCount += 1
+				else:
+					solCount += (self.factorial(occur[unique[i]]))/(6*self.factorial(occur[unique[i]]-3))
 
 			for j in range(i+1,len(unique)):
 
@@ -39,25 +41,27 @@ class Solution(object):
 					#I and j not tri
 						#j is too big
 						break
-				for k in range(j+1,len(unique))
 
+				for k in range(i+2,len(unique)):
+					#i j k are tri
+						solCount += 1
+						#relation between number and sol
+					#are not tri:
+						break
+		return(int(solCount))
 
-
-
-		print(unique,occur)
-
-
-
-	def isTriangle(self, a,b,c):
+	def factorial(self, a):
 		"""
-		:type a,b,c: 
-		:rtype: bool
+		:type a: int
+		:rtype: int
 		"""
 
-		if (a + b < c) or (b + c < a) or (c + a < b):
-			return(False)
-		return(True)
-		
+		fact = 1
+		while a > 1:
+			fact = fact * a
+			a -= 1
+		return(int(fact))
+
 driver = Solution()
 
 t1 = [2,2,3,4]
@@ -65,10 +69,12 @@ t2 = [14,45,70,34,17,17,45,45,45]
 t3 = [82,10,63,49,72]
 t4 = [5,22,62,39,64]
 t5 = [1,40,98,77,85]
+t6 = [5,5,5,5,5]
 
 print('\n')
 print('\n',driver.triangleNumber(t1),"Answer = 3")
-print('\n',driver.triangleNumber(t2),"Answer = ")
-print('\n',driver.triangleNumber(t3),"Answer = ")
-print('\n',driver.triangleNumber(t4),"Answer = ")
-print('\n',driver.triangleNumber(t5),"Answer = ")
+print('\n',driver.triangleNumber(t2),"Answer = 51")
+print('\n',driver.triangleNumber(t3),"Answer = 5")
+print('\n',driver.triangleNumber(t4),"Answer = 3")
+print('\n',driver.triangleNumber(t5),"Answer = 4")
+print('\n',driver.triangleNumber(t6),"Answer = 10")
