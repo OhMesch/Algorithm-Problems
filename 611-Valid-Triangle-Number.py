@@ -1,6 +1,8 @@
 # Problem Statement: Given an array of non-negative integers representing side-length
 # Return the number of triplets that can form triangles
 
+# Status: In progress 40%
+
 class Solution(object):
 	def triangleNumber(self, nums):
 		"""
