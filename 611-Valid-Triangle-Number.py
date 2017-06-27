@@ -36,19 +36,17 @@ class Solution(object):
 
 				if occur[unique[i]] >= 2:
 					#iso
-					#check i and j
-					#if i and j are tri
-						solCount += 1
-						#relation between number and sol
-					#I and j not tri
-						#j is too big
+					if 2*unique[i] > unique[j]:
+						if occur[unique[i]] == 2:
+							solCount += occur[unique[j]]
+						else:
+							solCount += ((self.factorial(occur[unique[i]]))/(2*self.factorial(occur[unique[i]]-2))*occur[unique[j]])
+					else:
 						break
 
 				for k in range(i+2,len(unique)):
-					#i j k are tri
-						solCount += 1
-						#relation between number and sol
-					#are not tri:
+					if (unique[i]+unique[j] > unique[k]) and (unique[j]+unique[k] > unique[i]) and (unique[k]+unique[i] > unique[j]):
+						solCount += occur[unique[i]]*occur[unique[j]]*occur[unique[k]]
 						break
 		return(int(solCount))
 
@@ -57,7 +55,8 @@ class Solution(object):
 		:type a: int
 		:rtype: int
 		"""
-
+		if a <= 1:
+			return(1)
 		fact = 1
 		while a > 1:
 			fact = fact * a
@@ -71,7 +70,8 @@ t2 = [14,45,70,34,17,17,45,45,45]
 t3 = [82,10,63,49,72]
 t4 = [5,22,62,39,64]
 t5 = [1,40,98,77,85]
-t6 = [5,5,5,5,5]
+t6 = [2,2,5,5,5,5,5]
+
 
 print('\n')
 print('\n',driver.triangleNumber(t1),"Answer = 3")
