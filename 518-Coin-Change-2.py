@@ -1,74 +1,53 @@
-class Money(object):
-    def coin(self, total, coinList):
+class Solution(object):
+    def change(self, amount, coins):
         """
-        :type total: int
-        :type coinList: List
+        :type amount: int
+        :type coins: List[int]
         :rtype: int
         """
+        coins.sort()
 
-        coinList.sort()
+        if amount == 0:
+            return(1)
+
+        if coins == []:
+                return(0)
         
-        combinations = [[0 for change in range(total)] for coin in range(len(coinList))]
+        combinations = [[0 for change in range(amount+1)] for coin in range(len(coins))]
 
-        for row in range(len(coinList)):
-            for changeIndex in range(total):
-
-                #Establish easy terms for navigating through the 2D array
-                #currentElm = combinations[row][changeIndex]
-                aboveElm = combinations[row-1][changeIndex]
-                currentCoin = coinList[row]
-                moneySum = changeIndex+1
+        for row in range(len(coins)):
+            for moneySum in range(coins[0],amount+1):
+                #Establish terms for navigating through the 2D array
+                currentCoin = coins[row]
                 
-                #Establish a base case
-                if row == 0:
-                    if (moneySum) % coinList[0] == 0:
-                        combinations[0][changeIndex] = 1
-                else:
-                    #Carry prior if new coin is too big for total
-                    if currentCoin > moneySum: 
-                        combinations[row][changeIndex] = aboveElm
-                  
-                    #New coin is same size as change to be tendered
-                    elif currentCoin == moneySum: #This one might be eztranious
-                        combinations[row][changeIndex] = aboveElm + 1
-                        #Check remainder anyways
+                #Change can be delivered additionally in all new coin
+                if (moneySum) % currentCoin == 0:
+                    combinations[row][moneySum] += 1
 
-                    # New coin can go into total but needs other coins to suppliment
-                    # if currentCoin < moneySum and currentCoin > moneySum/2:
-                    #     difference = moneySum-currentCoin
-                    #     combinations[row][changeIndex] = combinations[row-1][difference-1] + 1
+                if row != 0:
+                    #Always carry previous solutions
+                    combinations[row][moneySum] += combinations[row-1][moneySum]
 
-                    #Change to be tendered can be given in all new coins
-                    if (moneySum)%currentCoin == 0:   
-                        combinations[row][changeIndex] = aboveElm + 1
-                        remainder = moneySum
-                        #Can the new coin be replaced by a combination of previous coins
-                        while remainder > currentCoin:
-                            remainder -= coinList[row]
-                            if combinations[row-1][remainder-1] != 0:
-                                combinations[row][changeIndex] = combinations[row-1][remainder-1] + aboveElm
-                                break
+                    #Change requires previous combination of coins to suppliment new coin
+                    remainder = moneySum - currentCoin
+                    while remainder > 0:
+                        combinations[row][moneySum] += combinations[row-1][remainder]
+                        remainder -= currentCoin
 
-                    remainder = moneySum
-                    while remainder > currentCoin:
-                        remainder -= coinList[row]
-                        if combinations[row-1][remainder-1] != 0:
-                            combinations[row][changeIndex] = combinations[row-1][remainder-1] + aboveElm
-                            break
+        # Uncomment to visualize solutions       
+        # testCounter = 0
+        # print('   ',list(range(amount+1)))
+        # for array in combinations:
+        #     print([coins[testCounter]],array)
+        #     testCounter += 1
 
+        return(combinations[-1][-1])
 
-        testCounter = 0
-        print('   ',list(range(1,total+1)))
-        for array in combinations:
-            print([coinList[testCounter]],array)
-            testCounter += 1
-
-        return((max(list(map(max,combinations)))))
-
-        
-
-driver = Money()
+driver = Solution()
 
 print('\n')
-print('\n Total: 4\n List: [1,2,3]\n',driver.coin(4,[1,2,3]),'\n Answer: 4\n')
-print('\n Total: 10\n List: [2,5,3,6]\n',driver.coin(10,[2,5,3,6]),'\n Answer: 5\n')
+print('\n Total: 3\n List: [2]\n',driver.change(3,[2]),'\n Answer: 0\n')
+print('\n Total: 5\n List: [1,2,5]\n',driver.change(5,[1,2,5]),'\n Answer: 4\n')
+print('\n Total: 4\n List: [1,2,3]\n',driver.change(4,[1,2,3]),'\n Answer: 4\n')
+print('\n Total: 10\n List: [2,5,3,6]\n',driver.change(10,[2,5,3,6]),'\n Answer: 5\n')
+print('\n Total: 5000\n List: [11,24,37,50,63,76,89,102]\n',driver.change(5000,[11,24,37,50,63,76,89,102]),'\n Answer: 992951208\n')
