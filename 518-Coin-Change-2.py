@@ -31,20 +31,30 @@ class Money(object):
                     #New coin is same size as change to be tendered
                     elif currentCoin == moneySum: #This one might be eztranious
                         combinations[row][changeIndex] = aboveElm + 1
+                        #Check remainder anyways
+
+                    # New coin can go into total but needs other coins to suppliment
+                    # if currentCoin < moneySum and currentCoin > moneySum/2:
+                    #     difference = moneySum-currentCoin
+                    #     combinations[row][changeIndex] = combinations[row-1][difference-1] + 1
 
                     #Change to be tendered can be given in all new coins
                     if (moneySum)%currentCoin == 0:   
                         combinations[row][changeIndex] = aboveElm + 1
+                        remainder = moneySum
+                        #Can the new coin be replaced by a combination of previous coins
+                        while remainder > currentCoin:
+                            remainder -= coinList[row]
+                            if combinations[row-1][remainder-1] != 0:
+                                combinations[row][changeIndex] = combinations[row-1][remainder-1] + aboveElm
+                                break
 
-                    #New coin can go into total but needs other coins to suppliment
-                    # remainder = total
-                    # while remainder > currentCoin:
-                    #     remainder -= coinList[row]
-                    #     if combinations[row-1][remainder-1] != 0:
-                    #         combinations[row][changeIndex] += combinations[row-1][remainder-1]
-                    #         break
-
-
+                    remainder = moneySum
+                    while remainder > currentCoin:
+                        remainder -= coinList[row]
+                        if combinations[row-1][remainder-1] != 0:
+                            combinations[row][changeIndex] = combinations[row-1][remainder-1] + aboveElm
+                            break
 
 
         testCounter = 0
