@@ -17,8 +17,8 @@ t3 = 2
 t4 = 64
 t5 = -16
 print('\n')
-print('Number',t1, '\nPower 2:',driver.hammingWeight(t1),'\nExpected Answer:','False\n')
-print('Number',t2, '\nPower 2:',driver.hammingWeight(t2),'\nExpected Answer:','False\n')
-print('Number',t3, '\nPower 2:',driver.hammingWeight(t3),'\nExpected Answer:','True\n')
-print('Number',t4, '\nPower 2:',driver.hammingWeight(t4),'\nExpected Answer:','True\n')
-print('Number',t5, '\nPower 2:',driver.hammingWeight(t5),'\nExpected Answer:','False\n')
+print('Number',t1, '\n1 Bits:',driver.hammingWeight(t1),'\nExpected Answer:','2\n')
+print('Number',t2, '\n1 Bits:',driver.hammingWeight(t2),'\nExpected Answer:','3\n')
+print('Number',t3, '\n1 Bits:',driver.hammingWeight(t3),'\nExpected Answer:','1\n')
+print('Number',t4, '\n1 Bits:',driver.hammingWeight(t4),'\nExpected Answer:','1\n')
+print('Number',t5, '\n1 Bits:',driver.hammingWeight(t5),'\nExpected Answer:','1\n')
