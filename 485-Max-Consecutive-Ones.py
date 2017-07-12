@@ -9,7 +9,6 @@ class Solution(object):
         """
         maxOnes = tempOnes = 0
         for digit in nums:
-        	print(digit)
         	if digit == 1:
         		tempOnes +=1
         	else:
