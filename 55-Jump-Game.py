@@ -7,16 +7,17 @@ class Solution(object):
 		:type nums: List[int]
 		:rtype: bool
 		"""
-		prev = [0]*len(nums)
+
+		closest = len(nums)
 		for i in range (len(nums)-1,-1,-1):
-			if i + nums[i] >= len(nums) - 1:
-				prev[i] = 1
-			elif 1 in prev[i:i+nums[i]+1]:
-				prev[i] = 1
-		if prev[0]== 1:
+			if i + nums[i] >= len(nums) - 1 or i + nums[i]>=closest:
+				closest = i
+				
+		if closest == 0:
 			return(True)
 		else:
 			return(False)
+
 driver = Solution()
 t1 = [2,3,1,1,4]
 t2 = [3,2,1,0,4]
