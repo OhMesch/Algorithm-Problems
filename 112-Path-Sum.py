@@ -1,5 +1,5 @@
 # Problem: Given a binary tree
-# Return: Each level of the tree
+# Return: Whether or not the target number is represented by any of the leaf's path sum
 
 # Definition for a binary tree node.
 class TreeNode(object):
