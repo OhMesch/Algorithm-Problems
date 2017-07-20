@@ -1,4 +1,4 @@
-# Problem: Given a binary tree
+# Problem: Given a binary tree and a target number
 # Return: Whether or not the target number is represented by any of the leaf's path sum
 
 # Definition for a binary tree node.
