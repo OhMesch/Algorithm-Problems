@@ -16,14 +16,9 @@ class Solution(object):
         """
         if root == None:
             return(False)
-        boolLeafs = list()
-        self.helper(root,sum,0,boolLeafs)
-        if any(boolLeafs):
-            return(True)
-        else:
-            return(False)
+        return(bool(self.helper(root,sum,0)))
         
-    def helper(self,root,target,pathSum,arr):
+    def helper(self,root,target,pathSum):
         """
         :type root: TreeNode
         :type depth: int
@@ -31,14 +26,16 @@ class Solution(object):
         """
         pathSum += root.val
         if root.left:
-            self.helper(root.left,target,pathSum,arr)
+            left = (self.helper(root.left,target,pathSum))
+            if left:
+                return(True)
         if root.right:
-            self.helper(root.right,target,pathSum,arr)
+            right = (self.helper(root.right,target,pathSum))
+            if right:
+                return(True)
         if (not root.left) and (not root.right): 
             if (pathSum == target):
-                arr.append(True)
-            else:
-                arr.append(False)
+                return(True)
 # -----------------------------------------------------------------------
 driver = Solution()
 
