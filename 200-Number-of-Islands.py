@@ -10,20 +10,20 @@ class Solution(object):
         if grid == []:
             return(0)
         sol = 0
-        oceanMap = [[int(char) for char in elm] for elm in grid]
+        oceanMap = [[char for char in elm] for elm in grid]
         checked = [[0 for y in oceanMap[0]] for x in oceanMap]
 
         for x in range(len(oceanMap[0])):
             for y in range(len(oceanMap)):
                 if checked[y][x] == 1:
                     continue
-                if oceanMap[y][x] == 1:
+                if oceanMap[y][x] == '1':
                     sol+=1
                     self.islandHelper(oceanMap,x,y,checked)
         return(sol)
 
     def islandHelper(self,islandArr,x,y,checkedArr):
-        if islandArr[y][x] == 1 and checkedArr[y][x] == 0:
+        if islandArr[y][x] == '1' and checkedArr[y][x] == 0:
             checkedArr[y][x] = 1
             if y-1 >= 0 and checkedArr[y-1][x] == 0:
                 self.islandHelper(islandArr,x,y-1,checkedArr)
