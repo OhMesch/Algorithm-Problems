@@ -5,25 +5,18 @@ class Solution(object):
         :rtype: str
         """
         vowels = set(['a','e','i','o','u','A','E','I','O','U'])
-        if [v for v in vowels if v in s] == []:
-            return(s)
         s = list(s)
-        solArr = len(s)*[0]
         i,j = 0, len(s) - 1
         while i <= j:
             while j-1 >= 0 and s[j] not in vowels:
-                solArr[j] = s[j]
                 j-=1
             if s[i] not in vowels:
-                solArr[i] = s[i]
                 i +=1
             else:
-                solArr[i],solArr[j] = s[j],s[i]
+                s[i],s[j] = s[j],s[i]
                 i+=1
                 j-=1
-        print(solArr)
-        print(solArr)
-        return(''.join(solArr))
+        return(''.join(s))
 
 driver = Solution()
 t1 = 'Hello'
