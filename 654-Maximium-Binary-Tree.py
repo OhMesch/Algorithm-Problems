@@ -7,7 +7,7 @@
     # The left subtree is the maximum tree constructed from left part subarray divided by the maximum number.
     # The right subtree is the maximum tree constructed from right part subarray divided by the maximum number.
 
-Definition for a binary tree node.
+# Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
