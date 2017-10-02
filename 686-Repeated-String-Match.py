@@ -17,8 +17,8 @@ class Solution(object):
         sol = 1
         long_A = A
         while B not in long_A:
-            if len(long_A) > len(B)*2 and sol > 1:
-                return(-1)
+            if len(long_A) > len(B):
+                return sol+1 if B in (long_A+A) else -1
             long_A+=A
             sol+=1
         return(sol)
