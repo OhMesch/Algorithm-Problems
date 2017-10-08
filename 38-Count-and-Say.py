@@ -42,6 +42,5 @@ class Solution(object):
             while i < len(s) and s[i] == tracking:
                 counter += 1
                 i += 1
-            next_s += (str(counter))
-            next_s += (str(tracking))
+            next_s += (str(counter)) + (str(tracking))
         return(next_s)
