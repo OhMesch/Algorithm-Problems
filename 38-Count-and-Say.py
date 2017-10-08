@@ -35,13 +35,13 @@ class Solution(object):
     
     def getNext(self,s):
         i = 0
-        next_s = []
+        next_s = ''
         while i < len(s):
             tracking = s[i]
             counter = 0
             while i < len(s) and s[i] == tracking:
                 counter += 1
                 i += 1
-            next_s.append(str(counter))
-            next_s.append(str(tracking))
-        return("".join(next_s))
+            next_s += (str(counter))
+            next_s += (str(tracking))
+        return(next_s)
