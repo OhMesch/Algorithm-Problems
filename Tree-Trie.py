@@ -21,7 +21,7 @@ class Trei(object):
     def __init__(self):
         self.root = TrieNode()
 
-    def printTrie(self):
+    def printTrieBFS(self):
         queue = [self.root]
         tree = []
         while len(queue) > 0:
@@ -45,6 +45,18 @@ class Trei(object):
             tree.append(row)
         print(tree)
 
+    def printTrieDFS(self, node = None, chain = ""):
+        if not node:
+            node = self.root
+        else:
+            chain += node.letter
+        i=0
+        for child_index in range((len(node.children))):
+            self.printTrieDFS(node.children[child_index],chain)
+            i+=1
+        if i == 0:
+            print(chain)
+
     def add(self,word):
         r = 0
         node = self.root
@@ -64,14 +76,14 @@ class Trei(object):
 #     print(child.letter)
 
 # Test Add and Print
-# driver = Trei()
-# driver.printTrie()
-# driver.add('catfish')
-# driver.add('cat')
-# driver.add('catterbug')
-# driver.add('fish')
-# driver.add('chogath')
-# driver.add('chat')
-# driver.add('right')
-# driver.add('champ')
-# driver.printTrie()
+driver = Trei()
+driver.printTrieDFS()
+driver.add('catfish')
+driver.add('cat')
+driver.add('catterbug')
+driver.add('fish')
+driver.add('chogath')
+driver.add('chat')
+driver.add('right')
+driver.add('champ')
+driver.printTrieDFS()
