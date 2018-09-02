@@ -24,53 +24,57 @@ class Solution:
         :type quiet: List[int]
         :rtype: List[int]
         """
-        key = dict()
-        mic = dict()
-        sol = [0]*len(quiet)
+        numberPeople = len(quiet)
+        self.personalBanks = [[] for x in range(numberPeople)]
+        self.quiet = quiet
+        self.richer = richer
+        self.loudestRichest = [None]*numberPeople
+        sol = [0]*numberPeople
 
-        for i,j in richer:
-            if i not in key:
-                key[i] = Bank(j)
-            else:
-                key[i].addPeasent(j)
-            if j not in richer:
-                key[j] = Bank()
+        self.createBanks()
 
-        for person,vol in enumerate(quiet):
-            mic[vol] = person
-
-        for person in range(len(quiet)):
-            for vol in quiet:
-                louderPerson = mic[vol]
-                if key[louderPerson].xIsPeasent(person,key):
-                    sol[person] = louderPerson
-                    break
+        for i in range(numberPeople):
+            sol[i] = self.getLoudestRichest(i)
 
         return(sol)
 
-class Bank:
-    def __init__(self,peasent = None):
-        self.richerThan = []
-        if peasent:
-            self.addPeasent(peasent)
+    def createBanks(self):
+        for rich, poor in self.richer:
+            self.personalBanks[poor].append(rich)
+        print(self.personalBanks)
 
-    def addPeasent(self, peasent):
-        self.richerThan.append(peasent)
+    def getLoudestRichest(self, person):
+        if self.loudestRichest[person] == None:
+            self.loudestRichest[person] = person
+            self.updateLoudestRichest(person)
+        return(self.loudestRichest[person])
 
-    def xIsPeasent(self, x, key):
-        if x in self.richerThan:
-            return(True)
-        else:
-            for peasent in self.richerThan:
-                if(key[peasent].xIsPeasent(x,key)):
-                    return(True)
-        return(False)
+    def updateLoudestRichest(self, person):
+        queue = self.personalBanks[person]
+        while queue:
+            newQ = []
+            for richer in queue:
+                self.checkNewLoudestRichest(person,richer)
+                newQ.extend(self.personalBanks[richer])
+            queue = newQ
 
 
-
-
+    def checkNewLoudestRichest(self, person, richer):
+        currLoudest = self.loudestRichest[person]
+        currChill = self.quiet[currLoudest]
+        challengerLoudest = self.getLoudestRichest(richer)
+        challengerChill = self.quiet[challengerLoudest]
+        self.loudestRichest[person] = min((currLoudest, currChill), (challengerLoudest, challengerChill), key=lambda x: x[1])[0]
 
 driver = Solution()
 print("_1_")
 print(driver.loudAndRich([[1,0],[2,1],[3,1],[3,7],[4,3],[5,3],[6,3]],[3,2,5,4,6,1,7,0]))
 print("[5, 5, 2, 5, 4, 5, 6, 7]\n")
+
+print("_2_")
+print(driver.loudAndRich([],[0,1]))
+print("[0, 1]\n")
+
+print("_3_")
+print(driver.loudAndRich([[0,1]],[0,1]))
+print("[0, 0]\n")
