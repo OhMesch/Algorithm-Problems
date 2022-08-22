@@ -13,8 +13,8 @@ class Solution:
         jewels = set(J)
 
         for char in S:
-        	if char in jewels:
-        		sol += 1
+            if char in jewels:
+                sol += 1
 
         return(sol)
 
